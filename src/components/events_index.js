@@ -22,12 +22,14 @@ class EventsIndex extends Component {
 renderEvents() {
   return _.map(this.props.events, event => (
     <TableRow key={event.id}>
-      <TableRowColumn>{event.id}</TableRowColumn>
-      <Link to={`/events/${event.id}`}>
-        <TableRowColumn>{event.title}</TableRowColumn>
-      </Link>
-      <TableRowColumn>{event.body}</TableRowColumn>
-    </TableRow>
+        <TableRowColumn>{event.id}</TableRowColumn>
+        <TableRowColumn>
+          <Link to={`/events/${event.id}`}>
+            {event.title}
+          </Link>
+        </TableRowColumn>
+        <TableRowColumn>{event.body}</TableRowColumn>
+      </TableRow>
   ))
 }
 
@@ -39,9 +41,9 @@ renderEvents() {
     }
     return(
       <>
-        <FloatingActionButton style={style} contentElement={<Link to='/events/new' />}>
-          <ContentAdd />
-        </FloatingActionButton>
+      <FloatingActionButton style={style} containerElement={<Link to='/events/new' />}>
+        <ContentAdd />
+      </FloatingActionButton>
         <Table>
           <TableHeader
             displaySelectAll={false}
